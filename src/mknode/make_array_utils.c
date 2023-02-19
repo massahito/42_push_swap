@@ -6,11 +6,12 @@
 /*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 21:08:24 by marai             #+#    #+#             */
-/*   Updated: 2023/02/15 00:18:02 by marai            ###   ########.fr       */
+/*   Updated: 2023/02/19 17:49:07 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+#include <limits.h>
 
 int		ft_isspace(char c);
 void	error_exit(void);
@@ -57,12 +58,14 @@ long	ft_atol(char *str)
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	while (str[i] == '+' || str[i] == '-')
+	if(str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
+	if (str[i] == '+' || str[i] == '-')
+		return (LONG_MAX);
 	while (ft_isdigit(str[i]))
 	{
 		if ((long)INT_MAX < ans || ans < (long)INT_MIN)
