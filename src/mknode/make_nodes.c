@@ -6,7 +6,7 @@
 /*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 00:12:33 by marai             #+#    #+#             */
-/*   Updated: 2023/02/15 00:16:30 by marai            ###   ########.fr       */
+/*   Updated: 2023/02/19 11:48:30 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	delete_node(t_node *stack)
 	while (stack != postnode)
 	{
 		stack->next = postnode->next;
-		printf("num delete %d\n", postnode->num);
-		printf("compressed_num delete %d\n", postnode->compressed_num);
-		printf("\n");
+		//printf("num delete %d\n", postnode->num);
+		//printf("compressed_num delete %d\n", postnode->compressed_num);
+		//printf("\n");
 		free(postnode);
 		postnode = stack->next;
 	}

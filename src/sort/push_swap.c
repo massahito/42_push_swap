@@ -6,7 +6,7 @@
 /*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:35:31 by marai             #+#    #+#             */
-/*   Updated: 2023/02/17 04:26:09 by marai            ###   ########.fr       */
+/*   Updated: 2023/02/19 11:47:43 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 	while (!is_nodes_ordered(stack_a) || b_activelen != 0)
 	{
 		movedlen = 0;
-		print(stack_a, stack_b);
+//		print(stack_a, stack_b);
 		while (6 < b_activelen)
 		{
 			movedlen = push_bigger_nodes(stack_b, stack_a, b_activelen, 0);
@@ -107,7 +107,6 @@ ssize_t	push_smaller_nodes(t_node *stack1, t_node *stack2, ssize_t activelen,
 	t_node	*nownode1;
 
 	threshold = nth_small_num(stack1, activelen / 2, activelen);
-	printf("threshhold %d\n", threshold);
 	i = 0;
 	swappednum = 0;
 	while (i < activelen)
