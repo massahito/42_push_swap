@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:35:31 by marai             #+#    #+#             */
-/*   Updated: 2023/02/19 11:47:43 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/22 00:06:48 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ ssize_t	push_bigger_nodes(t_node *stack1, t_node *stack2, ssize_t activelen,
 	t_node	*nownode1;
 
 	threshold = nth_small_num(stack1, activelen / 2, activelen);
-	printf("threshhold %d\n", threshold);
 	i = 0;
 	swappednum = 0;
 	while (i < activelen)
@@ -153,6 +152,7 @@ void	see_node(t_node *stack)
 	}
 }
 
+/*
 void	print(t_node *stack_a, t_node *stack_b)
 {
 	printf("------stack_a num-------\n");
@@ -165,3 +165,4 @@ void	print(t_node *stack_a, t_node *stack_b)
 	see_node(stack_b);
 	printf("\n\n");
 }
+*/

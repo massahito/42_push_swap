@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_nodes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 00:12:33 by marai             #+#    #+#             */
-/*   Updated: 2023/02/19 17:06:03 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/22 00:03:18 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_node	*make_list(int argc, char *argv[])
 	ssize_t	numslen;
 	int		*nums;
 
+	nums = NULL;
 	if (argc == 1)
 		exit(0);
 	numslen = check_compose(argc, argv);
