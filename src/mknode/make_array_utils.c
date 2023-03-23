@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_array_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 21:08:24 by marai             #+#    #+#             */
-/*   Updated: 2023/02/19 17:49:07 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/24 02:52:47 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ long	ft_atol(char *str)
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	if(str[i] == '+' || str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			sign = -1;

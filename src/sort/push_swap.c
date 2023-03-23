@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:35:31 by marai             #+#    #+#             */
-/*   Updated: 2023/03/22 00:06:48 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/24 02:52:12 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 	while (!is_nodes_ordered(stack_a) || b_activelen != 0)
 	{
 		movedlen = 0;
-//		print(stack_a, stack_b);
 		while (6 < b_activelen)
 		{
 			movedlen = push_bigger_nodes(stack_b, stack_a, b_activelen, 0);
@@ -140,6 +139,7 @@ ssize_t	is_nodes_ordered(t_node *stack)
 	return (1);
 }
 
+/*
 void	see_node(t_node *stack)
 {
 	t_node	*nownode;
@@ -152,7 +152,6 @@ void	see_node(t_node *stack)
 	}
 }
 
-/*
 void	print(t_node *stack_a, t_node *stack_b)
 {
 	printf("------stack_a num-------\n");

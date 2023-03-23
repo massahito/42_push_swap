@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 04:42:06 by marai             #+#    #+#             */
-/*   Updated: 2023/03/21 12:39:18 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/24 02:51:02 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q a.out");
-}
 int	main(int argc, char *argv[])
 {
 	t_node	*stack_a;
@@ -41,3 +37,8 @@ int	main(int argc, char *argv[])
 	delete_node(stack_a);
 	delete_node(stack_b);
 }
+
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q a.out");
+// }
