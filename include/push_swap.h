@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 03:21:59 by marai             #+#    #+#             */
-/*   Updated: 2023/02/19 17:05:13 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/26 00:05:58 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct i_node
+typedef struct s_node
 {
 	int				num;
 	int				compressed_num;
-	struct i_node	*back;
-	struct i_node	*next;
+	struct s_node	*back;
+	struct s_node	*next;
 }					t_node;
 
 // make_array_utils.c
@@ -59,6 +59,7 @@ t_node				*get_lastnode(t_node *stack);
 int					nth_small_num(t_node *stack, ssize_t nth,
 						ssize_t activelen);
 ssize_t				find_num_node(t_node *stack, int num);
+ssize_t				nth_smallest(t_node *stack, ssize_t activelen);
 
 //sort operation
 void				rotate_stack(t_node *stack, ssize_t stacknum);
@@ -82,4 +83,5 @@ void				print(t_node *stack_a, t_node *stack_b);
 void				push_swap(t_node *stack_a, t_node *stack_b,
 						ssize_t a_activelen, ssize_t b_activelen);
 void				see_node(t_node *stack);
+ssize_t				is_nodes_ordered(t_node *stack);
 #endif

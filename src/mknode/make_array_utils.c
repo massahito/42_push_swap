@@ -6,7 +6,7 @@
 /*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 21:08:24 by marai             #+#    #+#             */
-/*   Updated: 2023/03/24 02:52:47 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/26 01:41:14 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_isspace(char c)
 
 void	error_exit(void)
 {
-	ft_putstr_fd("Error\n", 1);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 
@@ -59,18 +59,16 @@ long	ft_atol(char *str)
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			sign = -1;
-		i++;
-	}
 	if (str[i] == '+' || str[i] == '-')
 		return (LONG_MAX);
 	while (ft_isdigit(str[i]))
 	{
-		if ((long)INT_MAX < ans || ans < (long)INT_MIN)
-			return (LONG_MAX);
 		ans = 10 * ans + (str[i] - '0');
+		if (((long)INT_MAX < ans && sign == 1)
+			|| ((long)INT_MAX + 1 < ans && sign == -1))
+			return (LONG_MAX);
 		i++;
 	}
 	return (ans * sign);

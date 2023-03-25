@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 03:19:33 by marai             #+#    #+#             */
-/*   Updated: 2023/02/14 14:48:30 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/26 00:23:25 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,30 @@ int	nth_small_num(t_node *stack, ssize_t nth, ssize_t activelen)
 		i++;
 	}
 	return (ans);
+}
+
+ssize_t	nth_smallest(t_node *stack, ssize_t activelen)
+{
+	t_node	*nownode;
+	int		lowest;
+	ssize_t	i;
+	ssize_t	ans;
+
+	i = 0;
+	ans = 0;
+	nownode = stack->next;
+	lowest = nownode->compressed_num;
+	while (i < activelen)
+	{
+		if (nownode->compressed_num < lowest)
+		{
+			lowest = nownode->compressed_num;
+			ans = i;
+		}
+		nownode = nownode->next;
+		i++;
+	}
+	return (ans + 1);
 }
 
 ssize_t	find_num_node(t_node *stack, int num)

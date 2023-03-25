@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_under_6.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <masadevs@gmail.com>                 +#+  +:+       +#+        */
+/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:01:46 by marai             #+#    #+#             */
-/*   Updated: 2023/02/17 05:00:51 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/26 00:40:29 by marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,14 @@ void	sort_node_under6(t_node *stack1, t_node *stack2, ssize_t activelen,
 		movednum = 0;
 		while (3 < get_node_len(stack1))
 		{
-			while (stack1->next->compressed_num != nth_small_num(stack1, 1,
+			if(nth_smallest(stack1, activelen) <= (get_node_len(stack1) + 1) / 2)
+				while (stack1->next->compressed_num != nth_small_num(stack1, 1,
 					get_node_len(stack1)))
-				rotate_stack(stack1, stacknum);
+					rotate_stack(stack1, stacknum);
+			else
+				while (stack1->next->compressed_num != nth_small_num(stack1, 1, 
+					get_node_len(stack1)))
+					reverse_rotate_stack(stack1, stacknum);
 			push_headnode(stack2, stack1, stacknum + 1);
 			movednum++;
 		}
