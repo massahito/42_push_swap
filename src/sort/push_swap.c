@@ -15,14 +15,13 @@
 #include <stdlib.h>
 
 ssize_t			is_nodes_ordered(t_node *stack);
-void			see_node(t_node *stack);
 static ssize_t	push_const_node(t_node *stack_a, t_node *stack_b,
-					ssize_t a_activelen);
+					ssize_t a_activelen, ssize_t movedlen);
 ssize_t			push_bigger_nodes(t_node *stack1, t_node *stack2,
 					ssize_t activelen, ssize_t stacknum);
 ssize_t			push_smaller_nodes(t_node *stack1, t_node *stack2,
 					ssize_t activelen, ssize_t stacknum);
-
+/*
 void	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 		ssize_t b_activelen)
 {
@@ -38,7 +37,7 @@ void	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 			b_activelen -= movedlen;
 		}
 		sort_node_under6(stack_b, stack_a, b_activelen, 0);
-		while (0 < b_activelen)
+		while (get_node_len(stack_b))
 		{
 			push_headnode(stack_a, stack_b, 1);
 			rotate_stack(stack_a, 1);
@@ -48,58 +47,41 @@ void	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 		a_activelen -= b_activelen;
 	}
 }
+*/
 
-/*
-ssize_t	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
+int	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 		ssize_t b_activelen)
 {
 	ssize_t	movedlen;
 
-	printf("a = %ld, b = %ld\n", a_activelen, b_activelen);
 	if (is_nodes_ordered(stack_a) && b_activelen == 0)
 		return 1;
-	movedlen = 0;
-	if (6 < b_activelen)
+	else if(b_activelen <= 6)
 	{
-		movedlen = push_bigger_nodes(stack_b, stack_a, b_activelen, 0);
-		a_activelen += movedlen;
-		b_activelen -= movedlen;
-		if(push_swap(stack_a, stack_b, a_activelen, b_activelen))
-			return 1;
-	}
-	else
-	{
-		sort_node_under6(stack_b, stack_a, b_activelen, 0);
-		while (0 < b_activelen)
+		sort_node_under6_dx(stack_b, stack_a, b_activelen, 0);
+		while (get_node_len(stack_b))
 		{
 			push_headnode(stack_a, stack_b, 1);
 			rotate_stack(stack_a, 1);
-			b_activelen--;
 		}
-		b_activelen = push_const_node(stack_a, stack_b, a_activelen, movedlen);
-		a_activelen -= b_activelen;
-		if(push_swap(stack_a, stack_b, a_activelen, b_activelen))
-			return 1;
+	}
+	else
+	{
+		movedlen = push_bigger_nodes(stack_b, stack_a, b_activelen, 0);
+		push_swap(stack_a, stack_b, a_activelen + movedlen, b_activelen - movedlen);
+		push_const_node(stack_a, stack_b, a_activelen + movedlen, movedlen);
+		push_swap(stack_a, stack_b, a_activelen - b_activelen, movedlen);
 	}
 	return 0;
 }
-*/
+
 static ssize_t	push_const_node(t_node *stack_a, t_node *stack_b,
-		ssize_t a_activelen)
+		ssize_t a_activelen, ssize_t movedlen)
 {
-	ssize_t	sortedlen;
-	ssize_t	stacklen;
 	ssize_t	b_activelen;
 
-	stacklen = get_node_len(stack_a);
-	sortedlen = stacklen - a_activelen;
-	if (stacklen < sortedlen * 2)
-		sortedlen = sortedlen - (stacklen + 1) / 2;
-	while (sortedlen < (stacklen - 1) / 2)
-		stacklen /= 2;
-	//printf("%ld, %ld\n", stacklen, sortedlen);
 	b_activelen = 0;
-	while (b_activelen < stacklen - sortedlen && a_activelen)
+	while (b_activelen < movedlen && a_activelen)
 	{
 		push_headnode(stack_b, stack_a, 0);
 		a_activelen--;

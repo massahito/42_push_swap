@@ -6,7 +6,7 @@
 /*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:01:46 by marai             #+#    #+#             */
-/*   Updated: 2023/03/26 19:16:11 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/27 13:34:17 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,33 @@ ssize_t	is_nodes_sorted(t_node *stack)
 		nownode = nownode->next;
 	}
 	return (1);
+}
+
+void	sort_node_under6_dx(t_node *stack1, t_node *stack2, ssize_t activelen,
+		ssize_t stacknum)
+{
+	if (activelen < 2)
+		return ;
+	else if (activelen == 2)
+		sort_node_2(stack1, stacknum);
+	else if (activelen == 3)
+		sort_node_3(stack1, stacknum);
+	else if (activelen < 7 && !is_nodes_sorted(stack1))
+	{
+		while (3 < get_node_len(stack1))
+		{
+			if(nth_smallest(stack1, activelen) <= (get_node_len(stack1) + 2) / 2)
+				while (stack1->next->compressed_num != nth_small_num(stack1, 1,
+					get_node_len(stack1)))
+					rotate_stack(stack1, stacknum);
+			else
+				while (stack1->next->compressed_num != nth_small_num(stack1, 1, 
+					get_node_len(stack1)))
+					reverse_rotate_stack(stack1, stacknum);
+			push_headnode(stack2, stack1, stacknum + 1);
+			rotate_stack(stack2, stacknum + 1);
+		}
+		sort_node_under3(stack1, get_node_len(stack1), stacknum);
+	}
+	return ;
 }
