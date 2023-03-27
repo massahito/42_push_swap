@@ -6,7 +6,7 @@
 /*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:35:31 by marai             #+#    #+#             */
-/*   Updated: 2023/03/28 01:55:50 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/28 02:05:53 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,6 @@ ssize_t			push_bigger_nodes(t_node *stack1, t_node *stack2,
 					ssize_t activelen, ssize_t stacknum);
 ssize_t			push_smaller_nodes(t_node *stack1, t_node *stack2,
 					ssize_t activelen, ssize_t stacknum);
-/*
-void	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
-		ssize_t b_activelen)
-{
-	ssize_t	movedlen;
-
-	while (!is_nodes_ordered(stack_a) || b_activelen != 0)
-	{
-		movedlen = 0;
-		while (6 < b_activelen)
-		{
-			movedlen = push_bigger_nodes(stack_b, stack_a, b_activelen, 0);
-			a_activelen += movedlen;
-			b_activelen -= movedlen;
-		}
-		sort_node_under6(stack_b, stack_a, b_activelen, 0);
-		while (get_node_len(stack_b))
-		{
-			push_headnode(stack_a, stack_b, 1);
-			rotate_stack(stack_a, 1);
-			b_activelen--;
-		}
-		b_activelen = push_const_node(stack_a, stack_b, a_activelen);
-		a_activelen -= b_activelen;
-	}
-}
-*/
 
 int	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 		ssize_t b_activelen)

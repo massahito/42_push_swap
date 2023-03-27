@@ -6,7 +6,7 @@
 /*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:01:46 by marai             #+#    #+#             */
-/*   Updated: 2023/03/28 02:02:53 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/28 02:06:29 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ t_node	*sort_node_3(t_node *stack, ssize_t stacknum)
 		rotate_stack(stack, stacknum);
 	}
 	else if (nownode->next->compressed_num < nownode->compressed_num
-			&& nownode->compressed_num < nownode->next->next->compressed_num)
+		&& nownode->compressed_num < nownode->next->next->compressed_num)
 		swap_headnode(stack, stacknum);
 	else if (nownode->next->compressed_num < nownode->next->next->compressed_num
-			&& nownode->next->next->compressed_num < nownode->compressed_num)
+		&& nownode->next->next->compressed_num < nownode->compressed_num)
 		rotate_stack(stack, stacknum);
 	else if (nownode->next->next->compressed_num < nownode->compressed_num
-			&& nownode->compressed_num < nownode->next->compressed_num)
+		&& nownode->compressed_num < nownode->next->compressed_num)
 		reverse_rotate_stack(stack, stacknum);
 	else if (nownode->next->next->compressed_num < nownode->next->compressed_num
-			&& nownode->next->compressed_num < nownode->compressed_num)
+		&& nownode->next->compressed_num < nownode->compressed_num)
 	{
 		rotate_stack(stack, stacknum);
 		swap_headnode(stack, stacknum);
