@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 03:21:59 by marai             #+#    #+#             */
-/*   Updated: 2023/03/26 00:05:58 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/26 18:22:49 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,6 @@ void				push_swap(t_node *stack_a, t_node *stack_b,
 						ssize_t a_activelen, ssize_t b_activelen);
 void				see_node(t_node *stack);
 ssize_t				is_nodes_ordered(t_node *stack);
+void	sort_node_under12(t_node *stack1, t_node *stack2, ssize_t activelen,
+		ssize_t stacknum);
 #endif

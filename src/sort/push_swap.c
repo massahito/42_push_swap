@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marai <marai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:35:31 by marai             #+#    #+#             */
-/*   Updated: 2023/03/26 02:12:16 by marai            ###   ########.fr       */
+/*   Updated: 2023/03/26 17:47:40Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,41 @@ void	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 	}
 }
 
+/*
+ssize_t	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
+		ssize_t b_activelen)
+{
+	ssize_t	movedlen;
+
+	printf("a = %ld, b = %ld\n", a_activelen, b_activelen);
+	if (is_nodes_ordered(stack_a) && b_activelen == 0)
+		return 1;
+	movedlen = 0;
+	if (6 < b_activelen)
+	{
+		movedlen = push_bigger_nodes(stack_b, stack_a, b_activelen, 0);
+		a_activelen += movedlen;
+		b_activelen -= movedlen;
+		if(push_swap(stack_a, stack_b, a_activelen, b_activelen))
+			return 1;
+	}
+	else
+	{
+		sort_node_under6(stack_b, stack_a, b_activelen, 0);
+		while (0 < b_activelen)
+		{
+			push_headnode(stack_a, stack_b, 1);
+			rotate_stack(stack_a, 1);
+			b_activelen--;
+		}
+		b_activelen = push_const_node(stack_a, stack_b, a_activelen, movedlen);
+		a_activelen -= b_activelen;
+		if(push_swap(stack_a, stack_b, a_activelen, b_activelen))
+			return 1;
+	}
+	return 0;
+}
+*/
 static ssize_t	push_const_node(t_node *stack_a, t_node *stack_b,
 		ssize_t a_activelen)
 {
@@ -58,8 +93,11 @@ static ssize_t	push_const_node(t_node *stack_a, t_node *stack_b,
 
 	stacklen = get_node_len(stack_a);
 	sortedlen = stacklen - a_activelen;
+	if (stacklen < sortedlen * 2)
+		sortedlen = sortedlen - (stacklen + 1) / 2;
 	while (sortedlen < (stacklen - 1) / 2)
 		stacklen /= 2;
+	//printf("%ld, %ld\n", stacklen, sortedlen);
 	b_activelen = 0;
 	while (b_activelen < stacklen - sortedlen && a_activelen)
 	{
