@@ -6,7 +6,7 @@
 /*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:35:31 by marai             #+#    #+#             */
-/*   Updated: 2023/03/26 17:47:40Marai            ###   ########.fr       */
+/*   Updated: 2023/03/28 01:55:50 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 	ssize_t	movedlen;
 
 	if (is_nodes_ordered(stack_a) && b_activelen == 0)
-		return 1;
-	else if(b_activelen <= 6)
+		return (1);
+	else if (b_activelen <= 6)
 	{
 		sort_node_under6_dx(stack_b, stack_a, b_activelen, 0);
 		while (get_node_len(stack_b))
@@ -68,11 +68,12 @@ int	push_swap(t_node *stack_a, t_node *stack_b, ssize_t a_activelen,
 	else
 	{
 		movedlen = push_bigger_nodes(stack_b, stack_a, b_activelen, 0);
-		push_swap(stack_a, stack_b, a_activelen + movedlen, b_activelen - movedlen);
+		push_swap(stack_a, stack_b, a_activelen + movedlen, b_activelen
+			- movedlen);
 		push_const_node(stack_a, stack_b, a_activelen + movedlen, movedlen);
 		push_swap(stack_a, stack_b, a_activelen - b_activelen, movedlen);
 	}
-	return 0;
+	return (0);
 }
 
 static ssize_t	push_const_node(t_node *stack_a, t_node *stack_b,
