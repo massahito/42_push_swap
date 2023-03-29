@@ -6,7 +6,7 @@
 /*   By: Marai <MasaDevs@gmail.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 04:42:06 by marai             #+#    #+#             */
-/*   Updated: 2023/03/29 13:07:57 by Marai            ###   ########.fr       */
+/*   Updated: 2023/03/29 13:21:15 by Marai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,3 @@ int	main(int argc, char *argv[])
 	delete_node(stack_a);
 	delete_node(stack_b);
 }
-
-// __attribute__((destructor))
-// static void destructor() {
-//     system("leaks -q push_swap");
-// }
