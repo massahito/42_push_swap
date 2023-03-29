@@ -50,5 +50,5 @@ fclean: clean
 re : fclean all
 
 .PHONY:
-		all clean fclean re printf
+		all clean fclean re
    
